@@ -1,0 +1,22 @@
+// Завдання 8. HTTP-запити (файл task-8.ts)
+console.log("");
+console.log("Завдання 8. HTTP-запити ");
+
+import axios from "axios";
+
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
+const fetchPosts = async (): Promise<Post[]> => {
+  const response = await axios.get<Post[]>(
+    "https://jsonplaceholder.typicode.com/posts"
+  );
+  return response.data;
+};
+
+fetchPosts().then((posts) => {
+  console.log(posts[0].title);
+});
